@@ -10,11 +10,11 @@ const testInput = `2-4,6-8
 
 describe('testing day 4', () => {
 
-    it('should return 3', () => {
+    it.skip('should return 3', () => {
         expect(day4(testInput)).toBe(3)
     })
 
-    it('should return 5', () => {
+    it.skip('should return 5', () => {
         expect(day42(testInput)).toBe(5)
     })
 })
