@@ -18,11 +18,11 @@ move 1 from 1 to 2`
 
 describe('testing day 4', () => {
 
-    it('should return CMZ', () => {
+    it.skip('should return CMZ', () => {
         expect(day5(testInput, initialCrates)).toBe('CMZ')
     })
 
-    it('should return MCD', () => {
+    it.skip('should return MCD', () => {
         expect(day52(testInput, initialCrates)).toBe('MCD')
     })
 })
