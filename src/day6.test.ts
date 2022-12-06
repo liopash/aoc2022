@@ -20,6 +20,10 @@ describe('testing day 6', () => {
         expect(day6('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw')).toBe(11)
     })
 
+    it('should return undefined', () => {
+        expect(day6('abacadaeafagahaiakalamanaoaparatasatauavawazax')).toBe(undefined)
+    })
+
     // part 2
     it('should return 19', () => {
         expect(day62('mjqjpqmgbljsphdztnvjfqwrcgsmlb')).toBe(19)
@@ -35,5 +39,9 @@ describe('testing day 6', () => {
 
     it('should return 29', () => {
         expect(day62('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg')).toBe(29)
+    })
+
+    it('should return undefined', () => {
+        expect(day62('abacadaeafagahaiakalamanaoaparatasatauavawazax')).toBe(undefined)
     })
 })
