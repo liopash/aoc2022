@@ -4,17 +4,13 @@ const input = inputReader('./day6.txt')
 const SEQUENCE_LENGTH = 4
 const MESSAGE_LENGTH = 14
 
-const unique = (arr: string[], length: number) => {
-    return (new Set(arr)).size === length
+const unique = (arr: string, length: number) => {
+    return (new Set([...arr])).size === length
 }
 
 const position = (input: string, length: number) => {
     for (let i = 0; i < input.length; i++) {
-        const arr = input.slice(i, i + length)
-
-        if (unique(arr.split(''), length)) {
-            return i + length
-        }
+        if (unique(input.slice(i, i + length), length))  return i + length
     }
 }
 
