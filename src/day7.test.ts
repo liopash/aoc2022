@@ -1,4 +1,4 @@
-import {part1} from './day7'
+import {part1, part2} from './day7'
 
 const testInput = `$ cd /
 $ ls
@@ -14,15 +14,8 @@ dir e
 62596 h.lst
 $ cd e
 $ ls
-dir a
 584 i
-1000 fuf
-$ cd a
-$ ls
-999 bollocks
 $ cd ..
-$ cd ..
-$ cd d
 $ cd ..
 $ cd d
 $ ls
@@ -34,8 +27,12 @@ $ ls
 describe('testing day 7', () => {
 
     // part 1
-    it('should return 100434', () => {
-        expect(part1(testInput)).toBe(100434)
+    it.skip('should return 95437', () => {
+        expect(part1(testInput)).toBe(95437)
     })
 
+    // part 2
+    it.skip('should return 24933642', () => {
+        expect(part2(testInput)).toBe(24933642)
+    })
 })

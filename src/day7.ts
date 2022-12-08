@@ -7,7 +7,7 @@ const crawler = (input: string) => {
     const lines = input.split('\n')
     const fs = new Map()
     const rootIdx = randomUUID()
-    const folders: any = {'root': rootIdx}
+    const folders: any = {root: rootIdx}
     fs.set(rootIdx, { dir: 'root', content: null, parrent: null, parrentIdx: null, size: 0 })
     const path: string[] = []
     for (const line of lines) {
@@ -32,22 +32,20 @@ const crawler = (input: string) => {
                 fs.set(idx, {
                     dir: null,
                     content: b,
-                    parrent: path[path.length - 1],
-                    parrentIdx: folders[path[path.length - 1]],
+                    parrentIdx: folders[path.join('/')],
                     size: parseInt(a)
                 })
-                updateDir(folders[path[path.length - 1]], fs, parseInt(a))
+                updateDir(folders[path.join('/')], fs, parseInt(a))
             }
             if (a === 'dir') {
                 fs.set(idx, {
                     dir: b,
                     content: null,
-                    parrent: path[path.length - 1],
-                    parrentIdx: folders[path[path.length - 1]],
+                    parrentIdx: folders[path.join('/')],
                     size: 0,
                 })
-                folders[b] = idx
-                updateDir(folders[path[path.length - 1]], fs, 0)
+                folders[[...path, b].join('/')] = idx
+                updateDir(folders[path.join('/')], fs, 0)
             }
         }
     }
@@ -70,22 +68,25 @@ const getFolders = (filesystem: any) => {
             folders.push(f)
         }
     })
-    // console.log('folders', folders.length, folders.map((f: any) => f.dir))
     return folders
 }
 
 export const part1 = (input: string) => {
     const parsed = crawler(input)
     const folders = getFolders(parsed)
-    // console.log('Folders', JSON.stringify(folders))
-    // console.log('Parsed', parsed)
 
     return folders.filter((f: any) => f.size <= 100000).reduce((a: number, b: any) => a + b.size, 0)
 }
 
 export const part2 = (input: string) => {
-    //
+    const parsed = crawler(input)
+    const folders = getFolders(parsed)
+
+    const sizes = folders.map((item: any) => item.size)
+    const max = Math.max(...sizes)
+
+    return Math.min(...sizes.filter((s: number) => s >= 30000000 - (70000000 - max)))
 }
 
 console.log('day7 part1', part1(input))
-// console.log('day7 part2', part2(input))
+console.log('day7 part2', part2(input))
