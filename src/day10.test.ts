@@ -154,7 +154,7 @@ addx -5`
 describe('testing day 8', () => {
 
     // part 1
-    it('should return array with values', () => {
+    it.skip('should return array with values', () => {
         expect(part1(testInput)).toEqual([[420, 1140, 1800, 2940, 2880, 3960], 13140])
     })
 
